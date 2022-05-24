@@ -1,0 +1,28 @@
+{
+    "java.project.sourcePaths": [
+        "Arquivos",
+        "src"
+    ],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Connect",
+            "database": "${workspaceFolder:ProjetoPoo}/bd/sabor.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "mysql-connector-java-8.0.29/mysql-connector-java-8.0.29.jar",
+            "src/mysql-connector-java-8.0.29.jar",
+            "c:\\Program Files\\Java\\jre1.8.0_271\\lib\\ext\\sqlite-jdbc\\sqlite-jdbc-3.7.2.jar"
+        ],
+        "exclude": [
+            "lib/mysql-connector-java-8.0.29/mysql-connector-java-8.0.29.jar",
+            "lib/sqlite-jdbc-3.36.0.3.jar"
+        ]
+    }
+}
