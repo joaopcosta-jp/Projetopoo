@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.event.*;
 import javax.swing.*;
+
+import DAO.SaborDAO;
 import pizzaria.*;
 
 public class Interface extends JFrame implements ActionListener{
@@ -27,7 +29,11 @@ public class Interface extends JFrame implements ActionListener{
 	private JRadioButton tres = new JRadioButton("Três Sabores");
 	private JRadioButton quatro = new JRadioButton("Quatro Sabores");
 	private ButtonGroup bgNumsab = new ButtonGroup();
-	private JComboBox cbbSabores = new JComboBox<Object>();
+	// Combobox para seleção de sabor
+	protected static JComboBox cbbSaboresA = new JComboBox<Object>();
+	protected static JComboBox cbbSaboresB = new JComboBox<Object>();
+	protected static JComboBox cbbSaboresC = new JComboBox<Object>();
+	protected static JComboBox cbbSaboresD = new JComboBox<Object>();
 	private JButton jbOk = new JButton();
 	private Cliente clienteA = new Cliente();
 	
@@ -82,7 +88,10 @@ public class Interface extends JFrame implements ActionListener{
 		f.addActionListener(this);
 
 		this.add(jlNumsab);
-		this.add(cbbSabores);
+		this.add(cbbSaboresA);
+		this.add(cbbSaboresB);
+		this.add(cbbSaboresC);
+		this.add(cbbSaboresD);
 		this.add(jlEscolhasabor);
 		this.add(p);
 		this.add(m);
@@ -109,7 +118,9 @@ public class Interface extends JFrame implements ActionListener{
 		jbOk.setMnemonic(KeyEvent.VK_C);
 		jbOk.addActionListener(this);
 		this.add(jbOk);
-		
+
+		SaborDAO.atualizaCombo();
+
 		this.setVisible(true);
 		
 		}
@@ -129,15 +140,111 @@ public class Interface extends JFrame implements ActionListener{
 
 			}
 
+			if(event.getSource() == m){
+
+				jlNumsab.setText("Escolha a quantidade de sabores: ");
+				jlNumsab.setBounds(20, 270, 300, 20);
+
+				um.setBounds(20, 290, 120, 20);
+				um.addActionListener(this);
+
+				dois.setBounds(20,310,120,20);
+				dois.addActionListener(this);
+
+			}
+
+			if(event.getSource() == g){
+
+				jlNumsab.setText("Escolha a quantidade de sabores: ");
+				jlNumsab.setBounds(20, 270, 300, 20);
+
+				um.setBounds(20, 290, 120, 20);
+				um.addActionListener(this);
+
+				dois.setBounds(20,310,120,20);
+				dois.addActionListener(this);
+
+				tres.setBounds(20, 330, 120, 20);
+				tres.addActionListener(this);
+
+			}
+
+			if(event.getSource() == f){
+
+				jlNumsab.setText("Escolha a quantidade de sabores: ");
+				jlNumsab.setBounds(20, 270, 300, 20);
+
+				um.setBounds(20, 290, 120, 20);
+				um.addActionListener(this);
+
+				dois.setBounds(20,310,120,20);
+				dois.addActionListener(this);
+
+				tres.setBounds(20, 330, 120, 20);
+				tres.addActionListener(this);
+
+				quatro.setBounds(20, 350, 120, 20);
+				quatro.addActionListener(this);
+
+			}
+
 			if(event.getSource() == um){
 
 				jlEscolha.setText("Escolha o(s) sabor(es):");
 				jlEscolha.setBounds(20, 340, 300, 20);
 
-				cbbSabores.setBounds(30, 370, 120, 20);
-				cbbSabores.addActionListener(this);
+				cbbSaboresA.setBounds(30, 370, 120, 20);
+				cbbSaboresA.addActionListener(this);
 
-			}		
+			}
+
+			if(event.getSource() == dois){
+
+				jlEscolha.setText("Escolha o(s) sabor(es):");
+				jlEscolha.setBounds(20, 340, 300, 20);
+
+				cbbSaboresA.setBounds(30, 370, 120, 20);
+				cbbSaboresA.addActionListener(this);
+
+				cbbSaboresB.setBounds(30, 390, 120, 20);
+				cbbSaboresB.addActionListener(this);
+
+			}
+
+			if(event.getSource() == tres){
+
+				jlEscolha.setText("Escolha o(s) sabor(es):");
+				jlEscolha.setBounds(20, 340, 300, 20);
+
+				cbbSaboresA.setBounds(30, 370, 120, 20);
+				cbbSaboresA.addActionListener(this);
+
+				cbbSaboresB.setBounds(30, 390, 120, 20);
+				cbbSaboresB.addActionListener(this);
+
+				cbbSaboresC.setBounds(30, 410, 120, 20);
+				cbbSaboresC.addActionListener(this);
+
+			}
+
+			if(event.getSource() == quatro){
+
+				jlEscolha.setText("Escolha o(s) sabor(es):");
+				jlEscolha.setBounds(20, 340, 300, 20);
+
+				cbbSaboresA.setBounds(30, 370, 120, 20);
+				cbbSaboresA.addActionListener(this);
+
+				cbbSaboresB.setBounds(30, 390, 120, 20);
+				cbbSaboresB.addActionListener(this);
+
+				cbbSaboresC.setBounds(30, 410, 120, 20);
+				cbbSaboresC.addActionListener(this);
+
+				cbbSaboresD.setBounds(30, 430, 120, 20);
+				cbbSaboresD.addActionListener(this);
+
+			}
 
 			if(event.getSource() == jbOk){
 

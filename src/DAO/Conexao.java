@@ -1,3 +1,7 @@
+/*
+
+CLASSE FEITA PARA TESTAR A CONEXÃO DO BANCO QUANDO ESTAVAMOS APRENDENDO, NÃO ESTÁ SENDO UTILIZADA.
+
 package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,3 +27,4 @@ public class Conexao {
    }
  
 }
+*/

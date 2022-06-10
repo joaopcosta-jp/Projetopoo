@@ -2,25 +2,30 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import javax.swing.JOptionPane;
 import com.mysql.cj.protocol.Resultset;
 import com.mysql.cj.x.protobuf.MysqlxSql.StmtExecute;
 import com.mysql.cj.xdevapi.Result;
 
+import gui.Interface;
 import pizzaria.Sabor;
 
 
-public class SaborDAO {
+public class SaborDAO extends Interface{
+   
+      static Connection conn = null;
+      static PreparedStatement pst = null;
+      static Resultset rs = null;
 
-      private Connection conexao;
-      
       public SaborDAO(){
-
-         Conexao conexao = new Conexao();
+         
+         conn = Conexao2.ConnectaDB();
+         atualizaCombo();
 
       }
-   
+
 
       public void insere(Sabor s){
 
@@ -30,7 +35,7 @@ public class SaborDAO {
 
          try{
 
-            PreparedStatement stmt = conexao.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, s.getid());
             stmt.setString(2, s.getnome());
             stmt.setString(3, s.gettipo());
@@ -48,34 +53,25 @@ public class SaborDAO {
 
    }
 
-      /*public Sabor busca(String n){
-
-         Sabor s = new Sabor();
+      public static void atualizaCombo(){
+        
+         String sql = "select * from sabor";
 
          try{
-            String sql = "select * from sabor where nome like ?";
-            PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, "%" + n + "%");
+            pst = conn.prepareStatement(sql);
+            rs = (Resultset) pst.executeQuery();
 
-            Resultset rs = stmt.executeQuery();
-
-            s.setnome("Não encontrado");
-
-            while(rs.next()){
-               if(rs.getString("nome").equals(n)){
-                  s.setnome(rs.getString("Nome"));
-                  s.settipo(rs.getString("Tipo");
-                  s.setvalor(rs.getFloat());
-               }
+            while(((ResultSet) rs).next()){
+               cbbSaboresA.addItem(((ResultSet) rs).getString("nome"));
+               cbbSaboresB.addItem(((ResultSet) rs).getString("nome"));
+               cbbSaboresC.addItem(((ResultSet) rs).getString("nome"));
+               cbbSaboresD.addItem(((ResultSet) rs).getString("nome"));
             }
 
-            rs.close();
-            stmt.close();
-            return s;
 
-         } catch(SQLException e){
-            throw new RuntimeException(e);
+         } catch (Exception e){
+
          }
 
-      }*/
+      }
 }
